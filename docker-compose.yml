@@ -1,0 +1,20 @@
+version: '3'
+services:
+  dbpostgresql:
+    image: "postgres"
+    container_name: dbpostgresql
+    restart: always
+    environment:
+      - 'POSTGRES_USER=postgres'
+      - 'POSTGRES_PASSWORD=5771199m'
+      - 'POSTGRES_DB=amortization'
+
+  app:
+    image: "amortization:1.0.0"
+    container_name: amortization
+    ports:
+      - '8080:2121'
+    restart: always
+    depends_on:
+      - dbpostgresql
+
